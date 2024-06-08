@@ -14,12 +14,12 @@ export default function Favourite({ deleteFromFav }) {
         <div>
             <div className='flex items-center justify-center'>
                 <Link to="/"> <button className='btn btn-primary'> Home </button></Link>
-
             </div>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4 mt-10'>
             {
                 addFav.map((book, index) => {
                     return (
-                        <div key={index} className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border-4">
+                        <div key={index} className="card w-full p-4 border-4">
                             <div className="card-body">
                                 <h2 className="card-title text-lg">{book.title}</h2>
                                 <div className="flex flex-wrap">
@@ -38,6 +38,7 @@ export default function Favourite({ deleteFromFav }) {
                     )
                 })
             }
+            </div>
         </div>
     )
 }

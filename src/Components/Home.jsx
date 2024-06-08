@@ -29,11 +29,12 @@ export default function Home({ apiData, pending, addtoFav }) {
     // };
 
     return (
-        <>
-            <div className='flex items-center justify-center w-full'>
+        <div className='p-6'>
+            <div className='flex items-center justify-center w-full gap-4'>
                 <Link to='/favourite'><button className='btn btn-primary'>Favorites</button></Link>
+                <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
             </div>
-            <div className="grid grid-cols-3 gap-4 p-4 mt-10">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4 mt-10">
                 {
                     !pending && apiData.map((element, index) => {
                         return (
@@ -57,7 +58,7 @@ export default function Home({ apiData, pending, addtoFav }) {
                     })
                 }
             </div>
-        </>
+        </div>
 
     )
 }
