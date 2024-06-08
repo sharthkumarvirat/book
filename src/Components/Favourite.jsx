@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function Favourite({ addfav }) {
+export default function Favourite() {
+
+    const [addFav, setAddFav] = useState(JSON.parse(localStorage.getItem('books')) || []);
+
+    useEffect(()=>{
+        let data = JSON.parse(localStorage.getItem('books'))
+        setAddFav(data);
+    },[])
+
     return (
         <div>
             {
-                addfav.map((book,index) => {
+                addFav.map((book, index) => {
                     return (
                         <div key={index} className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border-4">
                             <div className="card-body">

@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   const [apiData, setApiData] = useState([]);
   const [pending, setPending] = useState(true);
-  const [addFav, setAddFav] = useState(JSON.parse(localStorage.getItem('books')) || [])
+  const [addFav, setAddFav] = useState([])
   useEffect(() => {
     fetchingData()
   }, [])
@@ -35,12 +35,12 @@ function App() {
 
   return (
     <>
- <BrowserRouter basename='/'>
- <Routes>
-  <Route path='/' element={<Home apiData={apiData} pending={pending}  addtoFav={addtoFav} />} />
-  <Route path='/favourite' element={ <Favourite addFav={addFav}/>}/>
- </Routes>
- </BrowserRouter> 
+      <BrowserRouter basename='/'>
+        <Routes>
+          <Route path='/' element={<Home apiData={apiData} pending={pending} addtoFav={addtoFav} />} />
+          <Route path='/favourite' element={<Favourite/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

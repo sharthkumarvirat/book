@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Home({apiData,pending,addtoFav}) {
+export default function Home({ apiData, pending, addtoFav }) {
     // const [apiData, setApiData] = useState([]);
     // const [pending, setPending] = useState(true);
     // const [addFav,setAddFav]=useState(JSON.parse(localStorage.getItem('books')) || [])
@@ -27,33 +27,33 @@ export default function Home({apiData,pending,addtoFav}) {
     //      setAddFav(updateBook);
     //      localStorage.setItem("books",JSON.stringify(updateBook));
     // };
-    
+
     return (
-        <div className="flex flex-wrap justify-center gap-2"> 
+        <div className="flex flex-wrap justify-center gap-2">
             <Link to='/favourite'><h1>Fav</h1></Link>
-        {
-            !pending && apiData.map((element, index) => {
-                return (
-                    <div key={index} className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border-4">
-                        <div className="card-body">
-                            <h2 className="card-title text-lg">{element.title}</h2>
-                            <div className="flex flex-wrap">
-                                {element.author_name.map((name, index) => {
-                                    return (
-                                        <h1 key={index} className="author-name font-normal text-base">{name}</h1>
-                                    )
-                                })}
-                            </div>
-                            <p className="font-normal text-sm text-gray-600">Edition Count - {element.edition_count}</p>
-                            <div className="flex justify-end">
-                                <button className="btn" onClick={()=>{addtoFav(element)}}>Add to Favorites</button>
+            {
+                !pending && apiData.map((element, index) => {
+                    return (
+                        <div key={index} className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border-4">
+                            <div className="card-body">
+                                <h2 className="card-title text-lg">{element.title}</h2>
+                                <div className="flex flex-wrap">
+                                    {element.author_name.map((name, index) => {
+                                        return (
+                                            <h1 key={index} className="author-name font-normal text-base">{name}</h1>
+                                        )
+                                    })}
+                                </div>
+                                <p className="font-normal text-sm text-gray-600">Edition Count - {element.edition_count}</p>
+                                <div className="flex justify-end">
+                                    <button className="btn" onClick={() => { addtoFav(element) }}>Add to Favorites</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            })
-        }
-    </div>
-    
+                    )
+                })
+            }
+        </div>
+
     )
 }
