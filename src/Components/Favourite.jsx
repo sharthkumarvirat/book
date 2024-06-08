@@ -19,7 +19,7 @@ export default function Favourite({ deleteFromFav }) {
             {
                 addFav.map((book, index) => {
                     return (
-                        <div key={index} className="card w-full p-4 border-4">
+                        <div key={index} className="card w-full p-4 border-4 border-gray-500">
                             <div className="card-body">
                                 <h2 className="card-title text-lg">{book.title}</h2>
                                 <div className="flex flex-wrap">
@@ -31,7 +31,7 @@ export default function Favourite({ deleteFromFav }) {
                                 </div>
                                 <p className="font-normal text-sm text-gray-600">Edition Count - {book.edition_count}</p>
                                 <div className="flex justify-end">
-                                    <button className="btn" onClick={() => { deleteFromFav(book.key) }}>Delete</button>
+                                    <button className="btn btn-outline btn-primary" onClick={() => { deleteFromFav(book.key) }}>Delete</button>
                                 </div>
                             </div>
                         </div>

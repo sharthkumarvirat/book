@@ -17,7 +17,7 @@ function App() {
       url = `https://openlibrary.org/search.json?q=${search}&limit=10&page=1`
     }
     fetchingData(url)
-  }, [])
+  }, [search])
 
   const fetchingData = () => {
     fetch(url)
@@ -57,7 +57,7 @@ function App() {
       <>
         <BrowserRouter basename='/'>
           <Routes>
-            <Route path='/' element={<Home apiData={apiData} pending={pending} addtoFav={addtoFav} setSearch={setSearch} />} />
+            <Route path='/' element={<Home apiData={apiData} pending={pending} addtoFav={addtoFav} setPending={setPending} setSearch={setSearch} />} />
             <Route path='/favourite' element={<Favourite deleteFromFav={deleteFromFav} />} />
           </Routes>
         </BrowserRouter>
