@@ -22,7 +22,7 @@ export default function Favourite({ deleteFromFav }) {
     }
 
     return (
-        <div>
+        <div className='p-6'>
             <div className='flex items-center justify-center'>
                 <Link to="/"> <button className='btn btn-primary'> Home </button></Link>
             </div>
