@@ -29,31 +29,35 @@ export default function Home({ apiData, pending, addtoFav }) {
     // };
 
     return (
-        <div className="flex flex-wrap justify-center gap-2">
-            <Link to='/favourite'><h1>Fav</h1></Link>
-            {
-                !pending && apiData.map((element, index) => {
-                    return (
-                        <div key={index} className="card w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4 border-4">
-                            <div className="card-body">
-                                <h2 className="card-title text-lg">{element.title}</h2>
-                                <div className="flex flex-wrap">
-                                    {element.author_name.map((name, index) => {
-                                        return (
-                                            <h1 key={index} className="author-name font-normal text-base">{name}</h1>
-                                        )
-                                    })}
-                                </div>
-                                <p className="font-normal text-sm text-gray-600">Edition Count - {element.edition_count}</p>
-                                <div className="flex justify-end">
-                                    <button className="btn" onClick={() => { addtoFav(element) }}>Add to Favorites</button>
+        <>
+            <div className='flex items-center justify-center w-full'>
+                <Link to='/favourite'><button className='btn btn-primary'>Favorites</button></Link>
+            </div>
+            <div className="grid grid-cols-3 gap-4 p-4 mt-10">
+                {
+                    !pending && apiData.map((element, index) => {
+                        return (
+                            <div key={index} className="card w-full p-4 border-4">
+                                <div className="card-body">
+                                    <h2 className="card-title text-lg">{element.title}</h2>
+                                    <div className="flex flex-wrap">
+                                        {element.author_name.map((name, index) => {
+                                            return (
+                                                <h1 key={index} className="author-name font-normal text-base">{name}</h1>
+                                            )
+                                        })}
+                                    </div>
+                                    <p className="font-normal text-sm text-gray-600">Edition Count - {element.edition_count}</p>
+                                    <div className="flex justify-end">
+                                        <button className="btn" onClick={() => { addtoFav(element) }}>Add to Favorites</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
+                        )
+                    })
+                }
+            </div>
+        </>
 
     )
 }

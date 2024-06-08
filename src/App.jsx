@@ -11,9 +11,9 @@ function App() {
   const [addFav, setAddFav] = useState([])
   const [search, setSearch] = useState("")
 
+  let url = "https://openlibrary.org/search.json?q=YOUR_QUERY&limit=10&page=1"
   useEffect(() => {
-    let url = "https://openlibrary.org/search.json?q=YOUR_QUERY&limit=10&page=1"
-    if(search !== ""){
+    if (search !== "") {
       url = `https://openlibrary.org/search.json?q=${search}&limit=10&page=1`
     }
     fetchingData(url)
@@ -46,16 +46,25 @@ function App() {
     localStorage.setItem("books", JSON.stringify(updatedFav));
   };
 
-  return (
-    <>
-      <BrowserRouter basename='/'>
-        <Routes>
-          <Route path='/' element={<Home apiData={apiData} pending={pending} addtoFav={addtoFav} setSearch={setSearch} />} />
-          <Route path='/favourite' element={<Favourite deleteFromFav={deleteFromFav} />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  )
+  if (pending) {
+    return (
+      <div className='flex items-center justify-center w-screen h-screen'>
+        <span className="loading loading-spinner loading-xs h-[5rem] w-[5rem]"></span>
+      </div>
+    )
+  } else {
+    return (
+      <>
+        <BrowserRouter basename='/'>
+          <Routes>
+            <Route path='/' element={<Home apiData={apiData} pending={pending} addtoFav={addtoFav} setSearch={setSearch} />} />
+            <Route path='/favourite' element={<Favourite deleteFromFav={deleteFromFav} />} />
+          </Routes>
+        </BrowserRouter>
+      </>
+    )
+  }
+
 }
 
 export default App

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Favourite({ deleteFromFav }) {
 
@@ -11,6 +12,10 @@ export default function Favourite({ deleteFromFav }) {
 
     return (
         <div>
+            <div className='flex items-center justify-center'>
+                <Link to="/"> <button className='btn btn-primary'> Home </button></Link>
+
+            </div>
             {
                 addFav.map((book, index) => {
                     return (
