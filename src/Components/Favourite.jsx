@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Favourite() {
+export default function Favourite({ deleteFromFav }) {
 
     const [addFav, setAddFav] = useState(JSON.parse(localStorage.getItem('books')) || []);
 
-    useEffect(()=>{
+    useEffect(() => {
         let data = JSON.parse(localStorage.getItem('books'))
         setAddFav(data);
-    },[])
+    }, [])
 
     return (
         <div>
@@ -25,6 +25,9 @@ export default function Favourite() {
                                     })}
                                 </div>
                                 <p className="font-normal text-sm text-gray-600">Edition Count - {book.edition_count}</p>
+                                <div className="flex justify-end">
+                                    <button className="btn" onClick={() => { deleteFromFav(book.key) }}>Delete</button>
+                                </div>
                             </div>
                         </div>
                     )
