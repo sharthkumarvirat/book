@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Favourite({ deleteFromFav }) {
 
     const [addFav, setAddFav] = useState(JSON.parse(localStorage.getItem('books')) || []);
+    const [deleted, setDeleted] = useState(true);
 
     useEffect(() => {
         let data = JSON.parse(localStorage.getItem('books'))
         setAddFav(data);
-    }, [])
+    }, [deleted])
+
+    const notify = () => toast.success("Book removed from favorites!");
+
+    const removeFav = (key)=>{
+        notify();
+        deleteFromFav(key)
+        setDeleted(!deleted);
+    }
 
     return (
         <div>
@@ -31,7 +42,7 @@ export default function Favourite({ deleteFromFav }) {
                                 </div>
                                 <p className="font-normal text-sm text-gray-600">Edition Count - {book.edition_count}</p>
                                 <div className="flex justify-end">
-                                    <button className="btn btn-outline btn-primary" onClick={() => { deleteFromFav(book.key) }}>Delete</button>
+                                    <button className="btn btn-outline btn-primary" onClick={() => { removeFav(book.key) }}>Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -39,6 +50,7 @@ export default function Favourite({ deleteFromFav }) {
                 })
             }
             </div>
+            <ToastContainer />
         </div>
     )
 }

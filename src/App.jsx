@@ -11,7 +11,7 @@ function App() {
   const [addFav, setAddFav] = useState([])
   const [search, setSearch] = useState("")
 
-  let url = "https://openlibrary.org/search.json?q=YOUR_QUERY&limit=10&page=1"
+  let url = `https://openlibrary.org/search.json?q=a&limit=10&page=1`
   useEffect(() => {
     if (search !== "") {
       url = `https://openlibrary.org/search.json?q=${search}&limit=10&page=1`

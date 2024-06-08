@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home({ apiData, pending, addtoFav, setSearch, setPending }) {
 
@@ -8,6 +10,13 @@ export default function Home({ apiData, pending, addtoFav, setSearch, setPending
             setSearch(e.target.value);
             setPending(true);
         }, 2000);
+    }
+
+    const notify = (msg) => toast.success(`${msg} added to favorites!`);
+
+    const addTofav = (element) => {
+        addtoFav(element);
+        notify(element.title);
     }
 
     return (
@@ -32,7 +41,7 @@ export default function Home({ apiData, pending, addtoFav, setSearch, setPending
                                     </div>
                                     <p className="font-normal text-sm text-gray-600">Edition Count - {element.edition_count}</p>
                                     <div className="flex justify-end">
-                                        <button className="btn btn-outline btn-primary" onClick={() => { addtoFav(element) }}>Add to Favorites</button>
+                                        <button className="btn btn-outline btn-primary" onClick={() => { addTofav(element) }}>Add to Favorites</button>
                                     </div>
                                 </div>
                             </div>
@@ -40,6 +49,7 @@ export default function Home({ apiData, pending, addtoFav, setSearch, setPending
                     })
                 }
             </div>
+            <ToastContainer />
         </div>
 
     )
