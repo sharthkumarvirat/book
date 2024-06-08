@@ -22,8 +22,11 @@ export default function Home({ apiData, pending, addtoFav, setSearch, setPending
     return (
         <div className='p-6'>
             <div className='flex items-center justify-center w-full gap-4'>
-                <Link to='/favourite'><button className='btn btn-primary'>Favorites</button></Link>
-                <input type="text" placeholder="Type here" onChange={(e) => { handleSearch(e) }} className="input input-bordered w-full max-w-xs" />
+                <Link to='/favourite'><button className='btn btn-primary'>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    Favorites
+                </button></Link>
+                <input type="text" placeholder="Search book" onChange={(e) => { handleSearch(e) }} className="input input-bordered w-full max-w-xs" />
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-4 mt-10">
                 {
